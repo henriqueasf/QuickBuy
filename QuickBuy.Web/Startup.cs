@@ -31,7 +31,10 @@ namespace QuickBuy.Web
 
             /// Código adicionado
             var connectionString = Configuration.GetConnectionString("QuickBuyDB");  // variável do json
-            services.AddDbContext<QuickBuyContexto>(option => option.UseMySql(connectionString, m => m.MigrationsAssembly("QuickBuy.Repositorio")));
+            services.AddDbContext<QuickBuyContexto>(option => 
+                                                        option.UseLazyLoadingProxies()
+                                                        .UseMySql(connectionString, 
+                                                                m => m.MigrationsAssembly("QuickBuy.Repositorio")));
             /// Fim - Código adicionado
 
 

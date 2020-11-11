@@ -32,7 +32,10 @@ namespace QuickBuy.Repositorio.Config
                 .IsRequired()
                 .HasMaxLength(50);
 
-            //builder.Property(u => u.Pedidos);
+            // Configura relacionamento entre Usuario e Pedido - Aula 38
+            builder
+                .HasMany(u => u.Pedidos)
+                .WithOne(p => p.Usuario);
 
         }
     }
